@@ -13,5 +13,6 @@ import com.stock.app.entity.MyStock;
 public interface MyStockRepository extends JpaRepository<MyStock, Integer> {
 
 	public List<MyStock> findByUserId(int id);
-
+	
+	public MyStock findById(int myStockId);
 }
