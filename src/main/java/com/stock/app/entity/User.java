@@ -1,4 +1,4 @@
-package com.stock.app.entiry;
+package com.stock.app.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +16,13 @@ import lombok.Data;
 @Data
 @Entity
 @Table
-public class Account {
-
+public class User {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int userId;
+	private String loginName;
+	private String password;
 	private int accountId;
-	private int accountNumber;
-	private double balance;
-	
+
 }
