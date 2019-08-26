@@ -20,7 +20,7 @@ public class Stock {
 	private String stockName;
 	private double price;
 	private int quantity;
-	private String trending;
+	private int trending;
 	private String stockExchangeName;
 	private double stockPercentage;
 
