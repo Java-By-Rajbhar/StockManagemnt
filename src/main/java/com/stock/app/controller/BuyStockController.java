@@ -41,6 +41,6 @@ public class BuyStockController {
 	public ResponseEntity<MyStockStatusResponse> confirmBuyStock(@RequestBody MyStockRequestDto myStockRequestDto) {
 		LOGGER.info("inside confirmBuyStock");
 		MyStockStatusResponse response = myStockService.confirmMyStock(myStockRequestDto);
-		return new ResponseEntity<MyStockStatusResponse>(response, HttpStatus.OK);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 }
