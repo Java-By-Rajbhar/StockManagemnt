@@ -12,5 +12,6 @@ public class UserResponseDto {
 	
 	private int statusCode;
 	private String message;
+	private int accountId;
 
 }
