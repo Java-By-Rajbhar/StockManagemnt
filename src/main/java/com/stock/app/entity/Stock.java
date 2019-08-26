@@ -1,4 +1,4 @@
-package com.stock.app.entiry;
+package com.stock.app.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

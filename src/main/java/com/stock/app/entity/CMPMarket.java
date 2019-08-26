@@ -1,4 +1,4 @@
-package com.stock.app.entiry;
+package com.stock.app.entity;
 
 import java.time.LocalDate;
 
