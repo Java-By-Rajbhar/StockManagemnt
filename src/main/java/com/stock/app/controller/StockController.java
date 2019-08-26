@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.app.dto.StockDto;
@@ -36,10 +37,11 @@ public class StockController {
 	 * @return ResponseEntity ListOfStock
 	 */
 	@GetMapping("/stocks")
-	public ResponseEntity<List<StockDto>> getStockes(){
+	public ResponseEntity<List<StockDto>> getStocks(@RequestParam(value="tranding", required = false, defaultValue = "false") Boolean tranding){
 		
 		LOGGER.info("StockController :: getStockes() ");
 		
-		return new ResponseEntity<>(stockService.getStocks(), HttpStatus.OK);
+		return new ResponseEntity<>(stockService.getStocks(tranding), HttpStatus.OK);
 	}
+	
 }

@@ -32,11 +32,17 @@ public class StockServiceImpl implements StockService {
 	 * return
 	 */
 	@Override
-	public List<StockDto> getStocks() {
+	public List<StockDto> getStocks(Boolean tranding) {
 		
 		LOGGER.info("StockServiceImpl :: getStocks ");
 		
-		List<Stock> stocks = stockRepository.findAll();
+		List<Stock> stocks = new ArrayList<>();
+		if(tranding) {
+			stocks = stockRepository.findTop10ByOrderByTrendingDesc();
+//			stocks = stockRepository.findFirst10ByOrderByTrendingDesc();
+		}else {
+			stocks = stockRepository.findAll();
+		}
 		List<StockDto> stocksDto = new ArrayList<>();
 		if(!stocks.isEmpty()) {
 			for(Stock stock : stocks) {
@@ -49,4 +55,5 @@ public class StockServiceImpl implements StockService {
 		LOGGER.info("StockServiceImpl :: getStocks -- end");
 		return stocksDto;
 	}
+
 }
