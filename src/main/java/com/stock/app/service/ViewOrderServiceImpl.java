@@ -43,7 +43,7 @@ public class ViewOrderServiceImpl implements ViewOrderService {
 			viewOrederResponseDto.setPrice(myStock.getPrice());
 			viewOrederResponseDto.setQuantity(myStock.getQuantity());
 			viewOrederResponseDto.setStatus(myStock.getStatus());
-			viewOrederResponseDto.setStockname(stock.getStockExchangeName());
+			viewOrederResponseDto.setStockname(stock.getStockName());
 			viewOrederResponseDto.setTotalPrice(myStock.getTotalPrice());
 			listOrederResponse.add(viewOrederResponseDto);
 			 
