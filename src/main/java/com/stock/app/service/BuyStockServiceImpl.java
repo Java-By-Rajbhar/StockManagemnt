@@ -53,6 +53,7 @@ public class BuyStockServiceImpl implements BuyStockService {
 
 			Double totalprice = (stocksRequestDTO.getPrice() * stocksRequestDTO.getQuantity());
 			Double totalWithBrokage = totalprice + (totalprice * (0.1));
+			
 			Double totalmarketprice = (cMPMarketStore.getMarketPrice() * stocksRequestDTO.getQuantity());
 			Double totalmarketpriceWithBrokage = totalmarketprice + (totalmarketprice * (0.1));
 			stocksResponseDTO.setStockExchangeName(stocksRequestDTO.getStockExchangeName());
@@ -63,8 +64,8 @@ public class BuyStockServiceImpl implements BuyStockService {
 			stocksResponseDTO.setStockName(stocksRequestDTO.getStockName());
 			
 			MyStock mystock = new MyStock();
-			mystock.setPrice(totalmarketpriceWithBrokage);
-			mystock.setTotalPrice(totalWithBrokage);
+			mystock.setPrice(cMPMarketStore.getMarketPrice());
+			mystock.setTotalPrice(totalmarketpriceWithBrokage);
 			mystock.setQuantity(stocksRequestDTO.getQuantity());
 			mystock.setStatus("Pending");
 			mystock.setUserId(stocksRequestDTO.getUserId());
