@@ -1,5 +1,8 @@
 package com.stock.app.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -32,6 +35,8 @@ public class BuyStockServiceImpl implements BuyStockService {
 
 	@Autowired
 	MyStockRepository myStockRepository;
+	
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
 
 	public StocksResponseDTO buyStock(StocksRequestDTO stocksRequestDTO) {
 
@@ -57,9 +62,9 @@ public class BuyStockServiceImpl implements BuyStockService {
 			Double totalmarketprice = (cMPMarketStore.getMarketPrice() * stocksRequestDTO.getQuantity());
 			Double totalmarketpriceWithBrokage = totalmarketprice + (totalmarketprice * (0.1));
 			stocksResponseDTO.setStockExchangeName(stocksRequestDTO.getStockExchangeName());
-			stocksResponseDTO.setTotalPrice(totalWithBrokage);
+			stocksResponseDTO.setTotalPrice(new BigDecimal(totalWithBrokage).setScale(2, RoundingMode.HALF_UP).doubleValue());
 			stocksResponseDTO.setCurrentPrice(cMPMarketStore.getMarketPrice());
-			stocksResponseDTO.setTotalCurrentPrice(totalmarketpriceWithBrokage);
+			stocksResponseDTO.setTotalCurrentPrice(new BigDecimal(totalmarketpriceWithBrokage).setScale(2, RoundingMode.HALF_UP).doubleValue());
 			stocksResponseDTO.setStatusCode(HttpStatus.OK.value());
 			stocksResponseDTO.setStockName(stocksRequestDTO.getStockName());
 			
