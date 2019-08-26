@@ -38,26 +38,36 @@ public class BuyStockServiceImpl implements BuyStockService {
 	
 		Stock stock = stocksRepository.findByStockId(stocksRequestDTO.getStockId());
 		StocksResponseDTO stocksResponseDTO = new StocksResponseDTO();
-		Optional<CMPMarket> cmpMarket = cPMarketRepository.findByStockId(stocksRequestDTO.getStockId());
+		Optional<CMPMarket> CMPMarket = cPMarketRepository.findByStockId(stocksRequestDTO.getStockId());
+		
+		CMPMarket cMPMarketStore=new CMPMarket();
+		if(CMPMarket.isPresent())
+		{
+			cMPMarketStore=CMPMarket.get();
+		}
+		
+		
 		if (stocksRequestDTO.getQuantity() <= 5) {
 
 			BeanUtils.copyProperties(stocksRequestDTO, stocksResponseDTO);
 
 			Double totalprice = (stocksRequestDTO.getPrice() * stocksRequestDTO.getQuantity());
 			Double totalWithBrokage = totalprice + (totalprice * (0.1));
-			Double totalmarketprice = (cmpMarket.get().getMarketPrice() * stocksRequestDTO.getQuantity());
+			Double totalmarketprice = (cMPMarketStore.getMarketPrice() * stocksRequestDTO.getQuantity());
 			Double totalmarketpriceWithBrokage = totalmarketprice + (totalmarketprice * (0.1));
-
+			stocksResponseDTO.setStockExchangeName(stocksRequestDTO.getStockExchangeName());
 			stocksResponseDTO.setTotalPrice(totalWithBrokage);
-			stocksResponseDTO.setCurrentPrice(cmpMarket.get().getMarketPrice());
+			stocksResponseDTO.setCurrentPrice(cMPMarketStore.getMarketPrice());
 			stocksResponseDTO.setTotalCurrentPrice(totalmarketpriceWithBrokage);
 			stocksResponseDTO.setStatusCode(HttpStatus.OK.value());
-
+			stocksResponseDTO.setStockName(stocksRequestDTO.getStockName());
+			
 			MyStock mystock = new MyStock();
 			mystock.setPrice(totalmarketpriceWithBrokage);
 			mystock.setTotalPrice(totalWithBrokage);
 			mystock.setQuantity(stocksRequestDTO.getQuantity());
 			mystock.setStatus("Pending");
+			mystock.setUserId(stocksRequestDTO.getUserId());
 		
 			mystock.setStockId(stocksRequestDTO.getStockId());
 			myStockRepository.save(mystock);
