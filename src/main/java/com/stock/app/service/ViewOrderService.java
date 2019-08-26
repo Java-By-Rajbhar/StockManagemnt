@@ -1,11 +1,9 @@
 package com.stock.app.service;
 
-import java.util.List;
-
-import com.stock.app.entity.MyStock;
+import com.stock.app.dto.ViewOrederResponseDto;
 
 public interface ViewOrderService {
 
-	public List<MyStock> viewOrder(int id);
+	public ViewOrederResponseDto viewOrder(int id);
 	
 }
