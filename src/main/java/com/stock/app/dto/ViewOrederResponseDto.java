@@ -13,7 +13,11 @@ import lombok.Data;
  */
 @Data
 public class ViewOrederResponseDto {
-	
-    private	List<MyStock> oderList;
+
+	private String stockname;
+	private int quantity;
+	private double price;
+	private String status;
+	private double totalPrice;
 
 }

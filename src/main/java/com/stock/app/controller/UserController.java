@@ -37,6 +37,11 @@ public class UserController {
 	AccountService accountService;
 	
 	@PostMapping("/login")
+	/**
+	 * This service is use to user login  
+	 * @param userRequestDto
+	 * @return ResponseEntity<UserResponseDto>
+	 */
 	public ResponseEntity<UserResponseDto> userLogin(@RequestBody UserRequestDto userRequestDto)
 	{
 		logger.info("inside userLogin method of UserController class");
@@ -46,6 +51,11 @@ public class UserController {
 	}
 	
 	@GetMapping("/accountById/{accountId}")
+	/**
+	 * This service is use to get account detail based on account id 
+	 * @param accountId
+	 * @return ResponseEntity<AccountResponseDto>
+	 */
 	public ResponseEntity<AccountResponseDto> getAccountById(@PathVariable int accountId)
 	{
 		logger.info("inside getAccountById method UserController class");

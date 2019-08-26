@@ -23,6 +23,11 @@ public class AccountServiceImpl implements AccountService {
 	AccountRepository accountRepository;
 
 	@Override
+	/**
+	 * This method is use to get account detail based on account id
+	 * @param accountId
+	 * @return AccountResponseDto
+	 */
 	public AccountResponseDto getAccountByAccountId(int accountId) {
 		logger.info("inside getAccountByAccountId method of AccountServiceImpl class");
 		Account account = accountRepository.findByAccountId(accountId);

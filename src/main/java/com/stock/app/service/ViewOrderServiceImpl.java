@@ -1,5 +1,6 @@
 package com.stock.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.stock.app.dto.ViewOrederResponseDto;
 import com.stock.app.entity.MyStock;
+import com.stock.app.entity.Stock;
 import com.stock.app.repository.MyStockRepository;
+import com.stock.app.repository.StockRepository;
 
 
 @Service
@@ -20,18 +23,33 @@ public class ViewOrderServiceImpl implements ViewOrderService {
 	
 	@Autowired
 	private MyStockRepository myStockRepository;
+	
+	@Autowired
+	private StockRepository stockRepository;
 
 	@Override
-	public ViewOrederResponseDto viewOrder(int id) {
+	public List<ViewOrederResponseDto> viewOrder(int id) {
 
 		
 		LOGGER.info("ViewOrderServiceImpl viewOrder()");
-		ViewOrederResponseDto viewOrederResponseDto=new ViewOrederResponseDto();
+		
+		List<ViewOrederResponseDto> listOrederResponse=new ArrayList<>();
 		
 		
 		 List<MyStock> listOrder=myStockRepository.findByUserId(id);
-		 viewOrederResponseDto.setOderList(listOrder);
-		return viewOrederResponseDto;
+		 for (MyStock myStock : listOrder) {
+			Stock stock= stockRepository.findByStockId(myStock.getStockId());
+			ViewOrederResponseDto viewOrederResponseDto=new ViewOrederResponseDto();
+			viewOrederResponseDto.setPrice(myStock.getPrice());
+			viewOrederResponseDto.setQuantity(myStock.getQuantity());
+			viewOrederResponseDto.setStatus(myStock.getStatus());
+			viewOrederResponseDto.setStockname(stock.getStockExchangeName());
+			viewOrederResponseDto.setTotalPrice(myStock.getTotalPrice());
+			listOrederResponse.add(viewOrederResponseDto);
+			 
+		}
+		 
+		return listOrederResponse;
 	}
 
 }

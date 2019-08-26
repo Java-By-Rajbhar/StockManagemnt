@@ -38,7 +38,7 @@ public class TestStockService {
 		stock.setStockExchangeName("NSE");
 		stock.setStockId(101);
 		stock.setStockName("Bajaj Finance");
-		stock.setTrending("2");
+		stock.setTrending(2);
 		stocks.add(stock);
 
 		StockDto stockDto = new StockDto(101, "Bajaj Finance", 3345.0, 1, 1, "NSE", 2.45);

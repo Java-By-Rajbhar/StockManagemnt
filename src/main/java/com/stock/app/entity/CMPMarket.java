@@ -21,7 +21,9 @@ public class CMPMarket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cmpId;
 	private double marketPrice;
-    @Temporal(TemporalType.TIMESTAMP)
+
+	@Temporal(TemporalType.TIMESTAMP)
+
 	private Date dateTime;
 	private int stockId;
 }

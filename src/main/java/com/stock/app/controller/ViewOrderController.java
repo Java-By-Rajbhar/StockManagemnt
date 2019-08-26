@@ -1,5 +1,7 @@
 package com.stock.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ public class ViewOrderController {
 	private ViewOrderService viewOrderService;
 	
 	@GetMapping("/viewOrders/{userId}")
-	public ResponseEntity<ViewOrederResponseDto> viewOrder(@PathVariable int userId )
+	public ResponseEntity<List<ViewOrederResponseDto>> viewOrder(@PathVariable int userId )
 	{
 		
 		
