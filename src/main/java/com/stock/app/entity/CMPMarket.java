@@ -11,16 +11,17 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Data;
+
 @Data
 @Entity
 @Table
 public class CMPMarket {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cmpId;
 	private double marketPrice;
     @Temporal(TemporalType.TIMESTAMP)
 	private Date dateTime;
 	private int stockId;
-	}
+}
