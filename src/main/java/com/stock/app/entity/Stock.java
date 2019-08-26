@@ -1,4 +1,4 @@
-package com.stock.app.entiry;
+package com.stock.app.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ public class Stock {
 	private String stockName;
 	private double price;
 	private int quantity;
-	private String trending;
+	private int trending;
 	private String stockExchangeName;
 
 }

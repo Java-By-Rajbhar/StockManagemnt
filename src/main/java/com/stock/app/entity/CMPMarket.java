@@ -1,6 +1,6 @@
-package com.stock.app.entiry;
+package com.stock.app.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +21,6 @@ public class CMPMarket {
 	private int cmpId;
 	private double marketPrice;
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDate dateTime;
+	private Date dateTime;
 	private int stockId;
 	}
