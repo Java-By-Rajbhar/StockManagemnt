@@ -58,7 +58,7 @@ public class BuyStockServiceImpl implements BuyStockService {
 			mystock.setTotalPrice(totalWithBrokage);
 			mystock.setQuantity(stocksRequestDTO.getQuantity());
 			mystock.setStatus("Pending");
-			mystock.setStockExchangeName(stocksRequestDTO.getStockExchangeName());
+		
 			mystock.setStockId(stocksRequestDTO.getStockId());
 			myStockRepository.save(mystock);
 			stocksResponseDTO.setMyStockId(mystock.getId());

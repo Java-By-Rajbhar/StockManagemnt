@@ -23,5 +23,6 @@ public class Account {
 	private int accountId;
 	private int accountNumber;
 	private double balance;
+	private String accountHoldername;
 	
 }

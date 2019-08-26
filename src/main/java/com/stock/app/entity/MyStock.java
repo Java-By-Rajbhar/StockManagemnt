@@ -27,6 +27,6 @@ public class MyStock {
 	private double price;
 	private String status;
 	private double totalPrice;
-	private String stockExchangeName;
+	private int userId;
 
 }
