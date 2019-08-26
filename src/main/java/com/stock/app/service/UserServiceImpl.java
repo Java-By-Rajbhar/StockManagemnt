@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService {
 	UserRepository userRepository;
 
 	@Override
+	/**
+	 * This method is use to validate user credentials
+	 * @param userRequestDto
+	 * @return UserResponseDto
+	 * @exception InvalidCredentialsException
+	 */
 	public UserResponseDto userLogin(UserRequestDto userRequestDto) {
 		logger.info("inside userLogin method of UserServiceImpl class");
 		// get user object based on login name
