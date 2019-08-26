@@ -17,11 +17,10 @@ import com.stock.app.dto.UserRequestDto;
 @RequestMapping("/api")
 @RestController
 public class UserController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	public ResponseEntity<?> userLogin(@RequestBody UserRequestDto userRequestDto)
-	{
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
+	public ResponseEntity<?> userLogin(@RequestBody UserRequestDto userRequestDto) {
 		return null;
 	}
 
