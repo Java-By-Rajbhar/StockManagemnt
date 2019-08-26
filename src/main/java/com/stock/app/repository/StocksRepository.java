@@ -4,9 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.stock.app.entity.Stock;
 
+public interface StocksRepository extends JpaRepository<Stock, Integer>{
+	Stock findByStockId(int stockId);
 
-public interface StockRepository extends JpaRepository<Stock, Integer> {
-
-	public Stock findByStockId(int id);
 
 }

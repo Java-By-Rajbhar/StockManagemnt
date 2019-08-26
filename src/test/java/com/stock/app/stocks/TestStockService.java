@@ -38,7 +38,7 @@ public class TestStockService {
 		stock.setStockExchangeName("NES");
 		stock.setStockId(101);
 		stock.setStockName("Bharat Xchange");
-		stock.setTrending("2");
+		//stock.setTrending("2");
 		stocks.add(stock);
 		
 	//	StockDto stockDto = new StockDto(101, "Bharat Xchange", 1220, 1, "2", "NES");

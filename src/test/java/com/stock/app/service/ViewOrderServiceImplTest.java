@@ -15,12 +15,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.stock.app.dto.ViewOrederResponseDto;
 import com.stock.app.entity.MyStock;
+import com.stock.app.entity.Stock;
 import com.stock.app.repository.MyStockRepository;
+import com.stock.app.repository.StockRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ViewOrderServiceImplTest {
 
 	@Mock
 	MyStockRepository myStockRepository;
+	
+	@Mock
+	StockRepository stockRepository;
 	
 	@InjectMocks
 	ViewOrderServiceImpl viewOrderServiceImpl;
@@ -34,16 +39,37 @@ public class ViewOrderServiceImplTest {
 		mystock.setPrice(100);
 		mystock.setQuantity(3);
 		mystock.setStatus("CANCEL");
-		mystock.setStockExchangeName("ING VAYSYA");
 		mystock.setStockId(1);
 		mystock.setTotalPrice(1000.0);
 		mystock.setUserId(1);
-		List<MyStock> myOrder =new ArrayList<>();
-		myOrder.add(mystock);
+		
+		List<MyStock> myStockList=new ArrayList<>();
+		myStockList.add(mystock);
+		ViewOrederResponseDto viewOrederResponseDto=new ViewOrederResponseDto();
+		
+		viewOrederResponseDto.setPrice(100);
+		viewOrederResponseDto.setQuantity(3);
+		viewOrederResponseDto.setStatus("BUY");
+		viewOrederResponseDto.setStockname("ING VISYA");
+		viewOrederResponseDto.setTotalPrice(1000);
+		
+		Stock stock=new Stock();
+		stock.setPrice(100);;
+		stock.setQuantity(1);
+		stock.setStockExchangeName("ING VISYA");
+		stock.setStockId(1);
+		stock.setStockName("NSE");
+		stock.setTrending(1);
+		
+		List<ViewOrederResponseDto> myOrder =new ArrayList<>();
+		myOrder.add(viewOrederResponseDto);
 
-		when(myStockRepository.findByUserId(Mockito.anyInt())).thenReturn(myOrder);
-		ViewOrederResponseDto viewOrederResponseDtoActual=	viewOrderServiceImpl.viewOrder(1);
-		assertEquals(1, viewOrederResponseDtoActual.getOderList().size());
+		when(myStockRepository.findByUserId(Mockito.anyInt())).thenReturn(myStockList);
+		when(stockRepository.findByStockId(Mockito.anyInt())).thenReturn(stock);
+		
+		List<ViewOrederResponseDto> actual=viewOrderServiceImpl.viewOrder(1);
+		
+		assertEquals(1, actual.size());
 	}
 
 }

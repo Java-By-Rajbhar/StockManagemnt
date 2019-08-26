@@ -50,22 +50,28 @@ public class ViewOrderControllerTest {
 		mystock.setPrice(100);
 		mystock.setQuantity(3);
 		mystock.setStatus("CANCEL");
-		mystock.setStockExchangeName("ING VAYSYA");
 		mystock.setStockId(1);
 		mystock.setTotalPrice(1000.0);
 		mystock.setUserId(1);
 		ViewOrederResponseDto viewOrederResponseDto=new ViewOrederResponseDto();
-		List<MyStock> myOrder =new ArrayList<>();
-		myOrder.add(mystock);
-		viewOrederResponseDto.setOderList(myOrder);
+		
+		viewOrederResponseDto.setPrice(100);
+		viewOrederResponseDto.setQuantity(3);
+		viewOrederResponseDto.setStatus("BUY");
+		viewOrederResponseDto.setStockname("ING VISYA");
+		viewOrederResponseDto.setTotalPrice(1000);
+		
+		
+		
+		List<ViewOrederResponseDto> myOrder =new ArrayList<>();
+		myOrder.add(viewOrederResponseDto);
 
-		Mockito.when(viewOrderService.viewOrder(Mockito.anyInt())).thenReturn(viewOrederResponseDto);
+		Mockito.when(viewOrderService.viewOrder(Mockito.anyInt())).thenReturn(myOrder);
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/viewOrders/1").contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.ALL).content(asJsonString(""))).andReturn();
-		ResponseEntity<ViewOrederResponseDto> actual=viewOrderController.viewOrder(1);
-		assertEquals(1, actual.getBody().getOderList().size());
-	
+		 ResponseEntity<List<ViewOrederResponseDto>>  actual=viewOrderController.viewOrder(1);
+		 assertEquals(1, actual.getBody().size());
 	}
 
 	
