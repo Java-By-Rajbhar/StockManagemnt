@@ -13,5 +13,6 @@ public class StocksRequestDTO {
 	private int trending;
 	private String stockExchangeName;
 	private double userPrice;
+	private int userId;
 
 }

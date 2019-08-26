@@ -12,5 +12,7 @@ public class StocksResponseDTO {
 	private double currentPrice;
 	private double totalCurrentPrice;
 	private int myStockId;
+	private String stockExchangeName;
+	private String stockName;
 
 }

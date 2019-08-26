@@ -19,7 +19,7 @@ import com.stock.app.service.BuyStockService;
 
 
 @RestController
-@CrossOrigin(allowedHeaders = {"*","/"},origins ={"*","/"})
+@CrossOrigin(allowedHeaders = { "*", "/" }, origins = { "*", "/" })
 @RequestMapping("/api")
 public class BuyStockController {
 	
