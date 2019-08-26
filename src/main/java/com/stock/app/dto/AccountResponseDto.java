@@ -12,4 +12,5 @@ public class AccountResponseDto {
 
 	private int accountNumber;
 	private double balance;
+	private String accountHolderName;
 }

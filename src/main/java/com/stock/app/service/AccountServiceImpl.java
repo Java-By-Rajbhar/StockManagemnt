@@ -29,6 +29,7 @@ public class AccountServiceImpl implements AccountService {
 		AccountResponseDto responseDto = new AccountResponseDto();
 		responseDto.setAccountNumber(account.getAccountNumber());
 		responseDto.setBalance(account.getBalance());
+		responseDto.setAccountHolderName(account.getAccountHoldername());
 		
 		return responseDto;
 	}
