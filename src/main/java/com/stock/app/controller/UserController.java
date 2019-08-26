@@ -47,7 +47,7 @@ public class UserController {
 		logger.info("inside userLogin method of UserController class");
 		UserResponseDto response =userService.userLogin(userRequestDto);
 		
-		return new ResponseEntity<UserResponseDto>(response, HttpStatus.OK);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
 	@GetMapping("/accountById/{accountId}")
@@ -60,7 +60,7 @@ public class UserController {
 	{
 		logger.info("inside getAccountById method UserController class");
 	    AccountResponseDto	response = accountService.getAccountByAccountId(accountId);
-	    return new ResponseEntity<AccountResponseDto>(response, HttpStatus.OK);
+	    return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 }
