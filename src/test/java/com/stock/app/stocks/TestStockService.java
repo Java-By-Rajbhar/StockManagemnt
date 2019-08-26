@@ -23,32 +23,43 @@ public class TestStockService {
 
 	@Mock
 	private StockRepository stockRepository;
-	
+
 	@InjectMocks
 	private StockServiceImpl stockServiceImpl;
-	
+
 	List<Stock> stocks = new ArrayList<>();
 	List<StockDto> stockDtos = new ArrayList<>();
-	
+
 	@Before
 	public void setup() {
 		Stock stock = new Stock();
 		stock.setPrice(1220);
 		stock.setQuantity(1);
-		stock.setStockExchangeName("NES");
+		stock.setStockExchangeName("NSE");
 		stock.setStockId(101);
-		stock.setStockName("Bharat Xchange");
-		//stock.setTrending("2");
+		stock.setStockName("Bajaj Finance");
+		stock.setTrending(2);
 		stocks.add(stock);
-		
-	//	StockDto stockDto = new StockDto(101, "Bharat Xchange", 1220, 1, "2", "NES");
-		//stockDtos.add(stockDto);
+
+		StockDto stockDto = new StockDto(101, "Bajaj Finance", 3345.0, 1, 1, "NSE", 2.45);
+		stockDtos.add(stockDto);
+	}
+
+	@Test
+	public void testGetStocks() {
+
+		Mockito.when(stockRepository.findTop10ByOrderByTrendingDesc()).thenReturn(stocks);
+		Mockito.when(stockRepository.findAll()).thenReturn(stocks);
+		List<StockDto> actualStockDtos = stockServiceImpl.getStocks(false);
+		assertEquals(stocks.get(0).getStockExchangeName(), actualStockDtos.get(0).getStockExchangeName());
 	}
 	
 	@Test
-	public void testGetStocks() {
+	public void testGetTrendingStocks() {
+
+		Mockito.when(stockRepository.findTop10ByOrderByTrendingDesc()).thenReturn(stocks);
 		Mockito.when(stockRepository.findAll()).thenReturn(stocks);
-		List<StockDto> actualStockDtos = stockServiceImpl.getStocks();
-		assertEquals(stocks.get(0).getStockExchangeName(), actualStockDtos.get(0).getStockExchangeName() );
+		List<StockDto> actualStockDtos = stockServiceImpl.getStocks(true);
+		assertEquals(stocks.get(0).getStockExchangeName(), actualStockDtos.get(0).getStockExchangeName());
 	}
 }

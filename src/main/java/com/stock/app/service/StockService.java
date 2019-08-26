@@ -10,6 +10,6 @@ import com.stock.app.dto.StockDto;
  */
 public interface StockService {
 
-	List<StockDto> getStocks();
+	List<StockDto> getStocks(Boolean tranding);
 
 }
