@@ -1,6 +1,6 @@
 package com.stock.app.dto;
 
-import java.util.List;
+
 
 import com.stock.app.entity.MyStock;
 
