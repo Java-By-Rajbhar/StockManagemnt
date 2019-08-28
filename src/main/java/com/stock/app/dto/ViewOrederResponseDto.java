@@ -2,16 +2,20 @@ package com.stock.app.dto;
 
 
 
-import com.stock.app.entity.MyStock;
-
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * 
  * @author Shashank
  *
  */
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ViewOrederResponseDto {
 
 	private String stockname;
